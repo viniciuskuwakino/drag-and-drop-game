@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://55sd2c34k0lt"]
+
+[ext_resource type="Script" path="res://Button/Back_menu.gd" id="1_t4umi"]
+
+[node name="Button" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "MENU"
+script = ExtResource("1_t4umi")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
