@@ -1,9 +1,10 @@
 extends Control
 
+@onready var creditsPanel = get_node("%CreditsPanel")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	creditsPanel.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,8 +17,16 @@ func _on_start_pressed():
 
 
 func _on_options_pressed():
-	print("Options")
+	#print("Options")
+	pass
+
+func _on_credits_pressed():
+	creditsPanel.visible = true
 
 
 func _on_exit_pressed():
 	get_tree().quit()
+
+
+func _on_return_menu_pressed():
+	creditsPanel.visible = false

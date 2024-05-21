@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dayt2wbu0wj6g"]
+[gd_scene load_steps=16 format=3 uid="uid://dayt2wbu0wj6g"]
 
+[ext_resource type="Script" path="res://Fases/fase_1.gd" id="1_fp30s"]
 [ext_resource type="Texture2D" uid="uid://cq6sx5ukuid33" path="res://Assets/nv1.png" id="1_ocumv"]
 [ext_resource type="PackedScene" uid="uid://ciif5xuu6ukdr" path="res://Button/button.tscn" id="2_8o162"]
 [ext_resource type="Texture2D" uid="uid://bppbogyrwymny" path="res://Assets/tubarao.png" id="3_b248m"]
 [ext_resource type="PackedScene" uid="uid://55sd2c34k0lt" path="res://Button/button_back_menu.tscn" id="3_i7t0j"]
+[ext_resource type="FontFile" uid="uid://yckt2g0lqvmo" path="res://Assets/Font/ThaleahFat.ttf" id="3_tvn34"]
 [ext_resource type="Texture2D" uid="uid://xp8wa2dub6dm" path="res://Assets/Bar.png" id="4_2dfrn"]
 [ext_resource type="PackedScene" uid="uid://ce1nb4nwga2pu" path="res://Slot/slots.tscn" id="4_2ldk8"]
 [ext_resource type="Texture2D" uid="uid://b0poispy21hud" path="res://Assets/peixe.png" id="4_t2obl"]
@@ -11,8 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://5rguwfjv32ua" path="res://Assets/raposa.png" id="6_3kg2m"]
 [ext_resource type="Texture2D" uid="uid://doc3cnvjvmmw0" path="res://Assets/lagarto.png" id="7_aoe4w"]
 [ext_resource type="Texture2D" uid="uid://cn67q5pfnw2bd" path="res://Assets/passaro.png" id="8_uiw2s"]
+[ext_resource type="Texture2D" uid="uid://02v1ljsl0fmf" path="res://Assets/UI_Flat_Frame_02_Inward.png" id="14_xxumx"]
+[ext_resource type="Texture2D" uid="uid://g4su02pl3g1y" path="res://Assets/background_panel.png" id="15_e8wma"]
 
 [node name="Fase1" type="Node2D"]
+script = ExtResource("1_fp30s")
 
 [node name="Background_fase1" type="TextureRect" parent="."]
 offset_left = -37.0
@@ -26,12 +31,16 @@ offset_left = 947.0
 offset_top = 473.0
 offset_right = 1047.0
 offset_bottom = 513.0
+theme_override_fonts/font = ExtResource("3_tvn34")
+theme_override_font_sizes/font_size = 28
 
 [node name="Back_menu_btn" parent="." instance=ExtResource("3_i7t0j")]
 offset_left = 947.0
 offset_top = 520.0
 offset_right = 1047.0
 offset_bottom = 560.0
+theme_override_fonts/font = ExtResource("3_tvn34")
+theme_override_font_sizes/font_size = 28
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -123,6 +132,70 @@ layout_mode = 2
 
 [node name="Slot6" parent="Control/Inv2" groups=["check"] instance=ExtResource("4_2ldk8")]
 layout_mode = 2
+
+[node name="CoverPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+offset_left = -76.0
+offset_top = -63.0
+offset_right = -36.0
+offset_bottom = -23.0
+scale = Vector2(34.0756, 20.0923)
+
+[node name="CongratsPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+offset_left = 350.0
+offset_top = 800.0
+offset_right = 850.0
+offset_bottom = 1050.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CongratsPanel"]
+position = Vector2(250, 124)
+scale = Vector2(5.27654, 2.65698)
+texture = ExtResource("14_xxumx")
+
+[node name="ColorRect" type="ColorRect" parent="CongratsPanel"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 250.0
+color = Color(0.168627, 0.32549, 0.376471, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="CongratsPanel"]
+position = Vector2(249, 125)
+texture = ExtResource("15_e8wma")
+
+[node name="Label" type="Label" parent="CongratsPanel"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 21.0
+offset_right = 443.0
+offset_bottom = 80.0
+theme_override_fonts/font = ExtResource("3_tvn34")
+theme_override_font_sizes/font_size = 54
+text = "You Win"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CongratsPanel"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 106.0
+offset_right = 461.0
+offset_bottom = 165.0
+theme_override_fonts/font = ExtResource("3_tvn34")
+theme_override_font_sizes/font_size = 26
+text = "Congratulations!"
+horizontal_alignment = 1
+
+[node name="ReturnMenu" type="Button" parent="CongratsPanel"]
+layout_mode = 0
+offset_left = 205.0
+offset_top = 183.0
+offset_right = 305.0
+offset_bottom = 223.0
+theme_override_fonts/font = ExtResource("3_tvn34")
+theme_override_font_sizes/font_size = 24
+text = "Return"
+
+[connection signal="pressed" from="CongratsPanel/ReturnMenu" to="." method="_on_return_menu_pressed"]
 
 [editable path="Control/Inv/Slot"]
 [editable path="Control/Inv/Slot2"]
